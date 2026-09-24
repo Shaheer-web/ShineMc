@@ -164,15 +164,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             <h4 className="font-rajdhani font-bold uppercase tracking-wider text-white text-sm">
               Connect to ShineMC
             </h4>
-            <div className="p-3.5 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
-              <div className="flex items-center justify-between text-[11px]">
-                <span className="font-mono text-zinc-400">Server IP</span>
-                <span className="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
-                  {SERVER_IP_STATUS}
-                </span>
+            <div className="p-4 rounded-xl bg-zinc-900 border border-zinc-800 space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-mono text-zinc-400">Server IP:</span>
+                <span className="text-amber-400 font-mono font-bold">COMING SOON</span>
               </div>
-              <div className="font-mono text-amber-300 font-bold text-xs select-all">
-                {SERVER_IP}
+              <div className="font-mono text-amber-300 font-black text-base tracking-widest text-center py-1 bg-black/40 rounded-lg">
+                COMING SOON
               </div>
             </div>
 

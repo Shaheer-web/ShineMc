@@ -1,7 +1,7 @@
 import { StoreRank, ServerFeature, ServerRule } from '../types';
 
 export const SERVER_NAME = 'ShineMC';
-export const SERVER_IP = 'play.shinemc.net';
+export const SERVER_IP = 'COMING SOON';
 export const SERVER_IP_STATUS = 'COMING SOON';
 export const DISCORD_INVITE_URL = 'https://discord.gg/94TMUZGEb';
 export const STORE_CURRENCY = '₹';
