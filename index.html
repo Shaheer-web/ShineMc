@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <script>
+      (function() {
+        try {
+          const originalDefineProperty = Object.defineProperty;
+          Object.defineProperty = function(obj, prop, descriptor) {
+            if (
+              (obj === window || obj === globalThis || (typeof Window !== 'undefined' && obj === Window.prototype)) &&
+              prop === 'fetch' &&
+              descriptor
+            ) {
+              let currentFetch = descriptor.value !== undefined ? descriptor.value : undefined;
+              return originalDefineProperty.call(Object, obj, prop, {
+                configurable: true,
+                enumerable: descriptor.enumerable !== undefined ? descriptor.enumerable : true,
+                get: function() {
+                  if (currentFetch !== undefined) return currentFetch;
+                  if (descriptor.get) return descriptor.get();
+                  return undefined;
+                },
+                set: function(val) {
+                  currentFetch = val;
+                  if (typeof descriptor.set === 'function') {
+                    try { descriptor.set(val); } catch (e) {}
+                  }
+                }
+              });
+            }
+            return originalDefineProperty.apply(this, arguments);
+          };
+
+          // Also patch existing descriptor if already defined with only a getter
+          const existingDesc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (existingDesc && existingDesc.get && !existingDesc.set && existingDesc.configurable) {
+            let val = existingDesc.get();
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: () => val,
+              set: (newVal) => { val = newVal; }
+            });
+          }
+        } catch (err) {
+          // Graceful degradation
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShineMC | Your Next Minecraft Server</title>
+    <meta name="description" content="✨ SHINEMC — YOUR NEXT MINECRAFT SERVER! 24/7 Online, DonutSMP & FireMC-Style Experience, Money / Economy System, AFK Zone — Earn While AFK, Best Performance & Low Lag, Smooth & Stable Gameplay, Active & Fun Community. Grind • Fight • Earn • Dominate." />
+    <meta property="og:title" content="ShineMC | Your Next Minecraft Server" />
+    <meta property="og:description" content="✨ SHINEMC — YOUR NEXT MINECRAFT SERVER! 24/7 Online, DonutSMP & FireMC-Style Experience, Money / Economy System, AFK Zone — Earn While AFK, Best Performance & Low Lag, Smooth & Stable Gameplay, Active & Fun Community." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#08080c] text-zinc-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

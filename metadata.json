@@ -1,0 +1,6 @@
+{
+  "name": "ShineMC Minecraft Server",
+  "description": "Official portal for ShineMC Minecraft Server. DonutSMP & FireMC-style experience, 24/7 online, money and economy system, AFK Zone earn while AFK, top performance, smooth gameplay, active community, and official store.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

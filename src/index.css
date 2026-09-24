@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Cinzel", Georgia, serif;
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer utilities {
+  .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
+  .font-rajdhani {
+    font-family: var(--font-rajdhani);
+  }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #fef08a 0%, #eab308 40%, #ca8a04 80%, #a16207 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gold-gradient-border {
+    border-image: linear-gradient(to bottom right, #fef08a, #d97706, #78350f) 1;
+  }
+  .gold-glow {
+    box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.25);
+  }
+  .gold-glow-lg {
+    box-shadow: 0 0 45px -5px rgba(234, 179, 8, 0.35);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090d;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
